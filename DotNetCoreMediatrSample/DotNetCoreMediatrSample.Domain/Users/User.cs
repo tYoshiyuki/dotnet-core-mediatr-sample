@@ -1,4 +1,5 @@
 ﻿using System;
+using DotNetCoreMediatrSample.Domain.Circles;
 
 namespace DotNetCoreMediatrSample.Domain.Users
 {
@@ -43,6 +44,9 @@ namespace DotNetCoreMediatrSample.Domain.Users
             FullName = fullName ?? throw new ArgumentNullException(nameof(fullName));
         }
 
-        // TODO 未実装 CreateCircle
+        public Circle CreateCircle(ICircleFactory circleFactory, string circleName)
+        {
+            return circleFactory.Create(Id, circleName);
+        }
     }
 }

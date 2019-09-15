@@ -18,7 +18,23 @@ namespace DotNetCoreMediatrSample.Domain.Circles
             Users = users;
         }
 
+        public void Join(User user)
+        {
+            if (Users.Count >= 30)
+            {
+                throw new Exception("too many members");
+            }
+            Users.Add(user.Id);
+        }
+
         // TODO 未実装
+        public void Notify(ICircleNotification circleNotification)
+        {
+            circleNotification.Id(Id);
+            circleNotification.Name(CircleName);
+            circleNotification.Users(Users);
+        }
+
 
         public bool Equals(Circle other)
         {
@@ -39,4 +55,5 @@ namespace DotNetCoreMediatrSample.Domain.Circles
         }
 
     }
+
 }
