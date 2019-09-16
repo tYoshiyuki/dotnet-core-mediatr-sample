@@ -27,7 +27,6 @@ namespace DotNetCoreMediatrSample.Domain.Circles
             Users.Add(user.Id);
         }
 
-        // TODO 未実装
         public void Notify(ICircleNotification circleNotification)
         {
             circleNotification.Id(Id);
