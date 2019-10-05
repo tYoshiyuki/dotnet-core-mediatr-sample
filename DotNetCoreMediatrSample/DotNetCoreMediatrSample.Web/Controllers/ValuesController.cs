@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DotNetCoreMediatrSample.Controllers
+namespace DotNetCoreMediatrSample.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

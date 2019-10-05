@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <AssemblyName>DotNetCoreMediatrSample.Web</AssemblyName>
+    <RootNamespace>DotNetCoreMediatrSample.Web</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +13,10 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DotNetCoreMediatrSample.Domain\DotNetCoreMediatrSample.Domain.csproj" />
   </ItemGroup>
 
 </Project>

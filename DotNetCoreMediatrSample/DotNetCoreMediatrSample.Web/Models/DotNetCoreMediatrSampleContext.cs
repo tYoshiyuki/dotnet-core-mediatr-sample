@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace DotNetCoreMediatrSample.Models
+namespace DotNetCoreMediatrSample.Web.Models
 {
     public class DotNetCoreMediatrSampleContext : DbContext
     {
