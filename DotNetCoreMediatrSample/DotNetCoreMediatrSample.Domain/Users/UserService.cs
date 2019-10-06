@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DotNetCoreMediatrSample.Domain.Users
+﻿namespace DotNetCoreMediatrSample.Domain.Users
 {
     public class UserService
     {
-        private readonly IUserRepository repository;
+        private readonly IUserRepository _repository;
 
         public UserService(IUserRepository repository)
         {
-            this.repository = repository;
+            _repository = repository;
         }
 
         public bool IsDuplicated(User user)
         {
             var name = user.UserName;
-            var searched = repository.Find(name);
+            var searched = _repository.Find(name);
 
             return searched != null;
         }

@@ -1,10 +1,13 @@
-﻿using System.Reflection;
+﻿using DotNetCoreMediatrSample.Domain.Application.Handlers;
+using DotNetCoreMediatrSample.Domain.Users;
+using DotNetCoreMediatrSample.Infrastructure.InMemory.Users;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace DotNetCoreMediatrSample.Web
 {
@@ -20,12 +23,21 @@ namespace DotNetCoreMediatrSample.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMediatR(typeof(GetUserHandler).Assembly);
+            services.AddMediatR(typeof(CreateUserHandler).Assembly);
+            services.AddControllers();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Web API", Version = "v1" });
+            });
+
+            services.AddTransient<IUserRepository, InMemoryUserRepository>();
+            services.AddTransient<IUserFactory, UserFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -38,7 +50,19 @@ namespace DotNetCoreMediatrSample.Web
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Web API V1");
+                c.RoutePrefix = string.Empty;
+            });
+
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

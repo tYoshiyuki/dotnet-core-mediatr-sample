@@ -24,7 +24,7 @@ namespace DotNetCoreMediatrSample.Domain.Circles
             {
                 throw new Exception("too many members");
             }
-            Users.Add(user.Id);
+            Users.Add(user.UserId);
         }
 
         public void Notify(ICircleNotification circleNotification)

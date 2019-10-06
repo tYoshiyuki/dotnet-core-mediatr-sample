@@ -6,6 +6,6 @@ namespace DotNetCoreMediatrSample.Domain.Users
 {
     public interface IUserFactory
     {
-        User CreaUser(UserName userName, FullName fullName);
+        User CreateUser(UserName userName, FullName fullName);
     }
 }

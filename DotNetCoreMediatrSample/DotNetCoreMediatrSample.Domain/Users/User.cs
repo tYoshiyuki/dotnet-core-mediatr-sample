@@ -5,13 +5,13 @@ namespace DotNetCoreMediatrSample.Domain.Users
 {
     public class User : IEquatable<User>
     {
-        public UserId Id { get; }
+        public UserId UserId { get; }
         public UserName UserName { get; private set; }
         public FullName FullName { get; private set; }
 
-        public User(UserId id, UserName userName, FullName fullName)
+        public User(UserId userId, UserName userName, FullName fullName)
         {
-            Id = id;
+            UserId = userId;
             UserName = userName;
             FullName = fullName;
         }
@@ -19,7 +19,7 @@ namespace DotNetCoreMediatrSample.Domain.Users
         public bool Equals(User other)
         {
             if (other is null) return false;
-            return ReferenceEquals(this, other) || Equals(Id, other.Id);
+            return ReferenceEquals(this, other) || Equals(UserId, other.UserId);
         }
 
         public override bool Equals(object obj)
@@ -31,7 +31,7 @@ namespace DotNetCoreMediatrSample.Domain.Users
 
         public override int GetHashCode()
         {
-            return (Id != null ? Id.GetHashCode() : 0);
+            return (UserId != null ? UserId.GetHashCode() : 0);
         }
 
         public void ChangeUserName(UserName userName)
@@ -46,7 +46,7 @@ namespace DotNetCoreMediatrSample.Domain.Users
 
         public Circle CreateCircle(ICircleFactory circleFactory, string circleName)
         {
-            return circleFactory.Create(Id, circleName);
+            return circleFactory.Create(UserId, circleName);
         }
     }
 }
