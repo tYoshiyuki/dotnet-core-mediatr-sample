@@ -24,6 +24,11 @@ namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Test.Users
 
         private void PrepareUsers()
         {
+            foreach (var user in _userRepository.FindAll())
+            {
+                _userRepository.Remove(user);
+            }
+
             foreach (var user in _users)
             {
                 _userRepository.Save(user);

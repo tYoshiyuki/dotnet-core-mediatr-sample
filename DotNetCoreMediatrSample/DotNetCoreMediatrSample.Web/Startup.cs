@@ -1,6 +1,7 @@
 ﻿using DotNetCoreMediatrSample.Domain.Application.Handlers;
 using DotNetCoreMediatrSample.Domain.Domain.Users;
 using DotNetCoreMediatrSample.Infrastructure.InMemory.Users;
+using DotNetCoreMediatrSample.Web.Middlewares;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -58,6 +59,7 @@ namespace DotNetCoreMediatrSample.Web
                 c.RoutePrefix = string.Empty;
             });
 
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
