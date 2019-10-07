@@ -1,5 +1,5 @@
 ﻿using DotNetCoreMediatrSample.Domain.Application.Handlers;
-using DotNetCoreMediatrSample.Domain.Users;
+using DotNetCoreMediatrSample.Domain.Domain.Users;
 using DotNetCoreMediatrSample.Infrastructure.InMemory.Users;
 using MediatR;
 using Microsoft.AspNetCore.Builder;

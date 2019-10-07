@@ -1,9 +1,7 @@
-﻿using DotNetCoreMediatrSample.Domain.Users;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using DotNetCoreMediatrSample.Domain.Domain.Users;
 
-namespace DotNetCoreMediatrSample.Domain.Circles
+namespace DotNetCoreMediatrSample.Domain.Domain.Circles
 {
     public interface ICircleNotification
     {

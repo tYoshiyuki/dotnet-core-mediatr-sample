@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DotNetCoreMediatrSample.Domain.Users
+namespace DotNetCoreMediatrSample.Domain.Domain.Users
 {
     public class UserId : IEquatable<UserId>
     {

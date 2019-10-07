@@ -1,4 +1,4 @@
-﻿using DotNetCoreMediatrSample.Domain.Users;
+﻿using DotNetCoreMediatrSample.Domain.Domain.Users;
 
 namespace DotNetCoreMediatrSample.Domain.Application.Models
 {

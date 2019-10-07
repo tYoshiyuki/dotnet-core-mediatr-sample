@@ -1,6 +1,6 @@
-﻿using DotNetCoreMediatrSample.Domain.Users;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using DotNetCoreMediatrSample.Domain.Domain.Users;
 
 namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Users
 {
@@ -10,14 +10,13 @@ namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Users
 
         public User Find(UserId id)
         {
-            // TODO テスト実装、NULLで落ちる
             return _store.TryGetValue(id, out var target) ? Clone(target) : null;
         }
 
         public User Find(UserName userName)
         {
-            // TODO テスト実装、NULLで落ちる
-            return Find(_store.Values.FirstOrDefault(_ => _.UserName.Equals(userName))?.UserId);
+            var target = _store.Values.FirstOrDefault(_ => _.UserName.Equals(userName));
+            return target == null ? null : Find(target.UserId);
         }
 
         public IEnumerable<User> FindAll()

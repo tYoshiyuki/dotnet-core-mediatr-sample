@@ -1,4 +1,4 @@
-﻿namespace DotNetCoreMediatrSample.Domain.Users
+﻿namespace DotNetCoreMediatrSample.Domain.Domain.Users
 {
     public class UserName
     {

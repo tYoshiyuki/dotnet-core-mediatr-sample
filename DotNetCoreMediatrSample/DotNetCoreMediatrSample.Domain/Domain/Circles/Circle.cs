@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using DotNetCoreMediatrSample.Domain.Users;
+using DotNetCoreMediatrSample.Domain.Domain.Users;
 
-namespace DotNetCoreMediatrSample.Domain.Circles
+namespace DotNetCoreMediatrSample.Domain.Domain.Circles
 {
     public class Circle : IEquatable<Circle>
     {

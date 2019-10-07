@@ -1,5 +1,5 @@
-﻿using DotNetCoreMediatrSample.Domain.Users;
-using System;
+﻿using System;
+using DotNetCoreMediatrSample.Domain.Domain.Users;
 
 namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Users
 {

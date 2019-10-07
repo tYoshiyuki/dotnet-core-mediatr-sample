@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DotNetCoreMediatrSample.Domain.Circles
+﻿namespace DotNetCoreMediatrSample.Domain.Domain.Circles
 {
     public interface ICircleRepository
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DotNetCoreMediatrSample.Domain.Circles
+namespace DotNetCoreMediatrSample.Domain.Domain.Circles
 {
     public class CircleId : IEquatable<CircleId>
     {

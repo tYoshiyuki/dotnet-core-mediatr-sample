@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using DotNetCoreMediatrSample.Domain.Application.Models;
 using DotNetCoreMediatrSample.Domain.Application.Queries;
-using DotNetCoreMediatrSample.Domain.Users;
+using DotNetCoreMediatrSample.Domain.Domain.Users;
 using MediatR;
 
 namespace DotNetCoreMediatrSample.Domain.Application.Handlers

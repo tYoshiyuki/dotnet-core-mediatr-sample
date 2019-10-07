@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace DotNetCoreMediatrSample.Domain.Users
+namespace DotNetCoreMediatrSample.Domain.Domain.Users
 {
+
     public interface IUserRepository
     {
         User Find(UserId id);

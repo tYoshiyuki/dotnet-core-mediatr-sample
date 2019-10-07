@@ -1,7 +1,7 @@
 ﻿using System;
-using DotNetCoreMediatrSample.Domain.Circles;
+using DotNetCoreMediatrSample.Domain.Domain.Circles;
 
-namespace DotNetCoreMediatrSample.Domain.Users
+namespace DotNetCoreMediatrSample.Domain.Domain.Users
 {
     public class User : IEquatable<User>
     {

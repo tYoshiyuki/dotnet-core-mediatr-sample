@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Transactions;
 using DotNetCoreMediatrSample.Domain.Application.Commands;
-using DotNetCoreMediatrSample.Domain.Users;
+using DotNetCoreMediatrSample.Domain.Domain.Users;
 using MediatR;
 
 namespace DotNetCoreMediatrSample.Domain.Application.Handlers
