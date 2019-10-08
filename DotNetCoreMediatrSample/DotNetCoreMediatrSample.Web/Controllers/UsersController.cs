@@ -1,5 +1,4 @@
 ﻿using DotNetCoreMediatrSample.Domain.Application.Commands;
-using DotNetCoreMediatrSample.Domain.Application.Models;
 using DotNetCoreMediatrSample.Domain.Application.Queries;
 using DotNetCoreMediatrSample.Web.ViewModel;
 using MediatR;
@@ -20,9 +19,18 @@ namespace DotNetCoreMediatrSample.Web.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<UserModel> Get(string id)
+        public async Task<ActionResult<UserViewModel>> Get(string id)
         {
-            return await _mediator.Send(new GetUserQuery(id));
+            var user = await _mediator.Send(new GetUserQuery(id));
+            if (user == null) return BadRequest("データが存在しません");
+
+            return new UserViewModel
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                FirstName = user.Name.FirstName,
+                FamilyName = user.Name.FamilyName
+            };
         }
 
         [HttpPost]

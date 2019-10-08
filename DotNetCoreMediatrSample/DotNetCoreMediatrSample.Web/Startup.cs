@@ -28,10 +28,7 @@ namespace DotNetCoreMediatrSample.Web
             services.AddMediatR(typeof(CreateUserHandler).Assembly);
             services.AddControllers();
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Web API", Version = "v1" });
-            });
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Web API", Version = "v1"}); });
 
             services.AddTransient<IUserRepository, InMemoryUserRepository>();
             services.AddTransient<IUserFactory, UserFactory>();
@@ -41,14 +38,10 @@ namespace DotNetCoreMediatrSample.Web
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
             else
-            {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
-            }
 
             app.UseHttpsRedirection();
 
@@ -61,10 +54,7 @@ namespace DotNetCoreMediatrSample.Web
 
             app.UseMiddleware(typeof(ErrorHandlingMiddleware));
             app.UseRouting();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }
