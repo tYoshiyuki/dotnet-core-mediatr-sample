@@ -5,10 +5,11 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Transactions;
+using DotNetCoreMediatrSample.Domain.Application.Models;
 
 namespace DotNetCoreMediatrSample.Domain.Application.Handlers
 {
-    public class CreateUserHandler : IRequestHandler<CreateUserCommand, Unit>
+    public class CreateUserHandler : IRequestHandler<CreateUserCommand, UserModel>
     {
         private readonly IUserRepository _repository;
         private readonly UserService _service;
@@ -21,11 +22,12 @@ namespace DotNetCoreMediatrSample.Domain.Application.Handlers
             _factory = factory;
         }
 
-        public Task<Unit> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public Task<UserModel> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
+            User user;
             using (var transaction = new TransactionScope())
             {
-                var user = _factory.CreateUser(
+                user = _factory.CreateUser(
                     new UserName(request.UserName),
                     new FullName(request.FirstName, request.FamilyName)
                 );
@@ -38,7 +40,8 @@ namespace DotNetCoreMediatrSample.Domain.Application.Handlers
                 _repository.Save(user);
                 transaction.Complete();
             }
-            return Unit.Task;
+
+            return Task.FromResult(new UserModel(user));
         }
     }
 }

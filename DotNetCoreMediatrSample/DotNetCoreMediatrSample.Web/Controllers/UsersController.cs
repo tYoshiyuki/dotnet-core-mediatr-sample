@@ -34,9 +34,16 @@ namespace DotNetCoreMediatrSample.Web.Controllers
         }
 
         [HttpPost]
-        public async Task Create([FromBody] CreateUserViewModel user)
+        public async Task<ActionResult<UserViewModel>> Create([FromBody] CreateUserViewModel user)
         {
-            await _mediator.Send(new CreateUserCommand(user.UserName, user.FirstName, user.FamilyName));
+            var created = await _mediator.Send(new CreateUserCommand(user.UserName, user.FirstName, user.FamilyName));
+            return new UserViewModel
+            {
+                Id = created.Id,
+                UserName = created.UserName,
+                FirstName = created.Name.FirstName,
+                FamilyName = created.Name.FamilyName
+            };
         }
     }
 }
