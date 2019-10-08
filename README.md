@@ -7,7 +7,7 @@ MediatR を用いて CQRS を実装するサンプル
 - MediatR
 - DDD
 
-# Note
+## Note
 - ドメインモデルのコードは、下記を参考にさせていただきました。
 	- https://github.com/nrslib/BottomUpDDDTheLaterPart
 
