@@ -1,10 +1,10 @@
-﻿using System;
+﻿using DotNetCoreMediatrSample.Domain.Application.Commands;
+using DotNetCoreMediatrSample.Domain.Application.Exceptions;
+using DotNetCoreMediatrSample.Domain.Domain.Users;
+using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Transactions;
-using DotNetCoreMediatrSample.Domain.Application.Commands;
-using DotNetCoreMediatrSample.Domain.Domain.Users;
-using MediatR;
 
 namespace DotNetCoreMediatrSample.Domain.Application.Handlers
 {
@@ -32,7 +32,7 @@ namespace DotNetCoreMediatrSample.Domain.Application.Handlers
 
                 if (_service.IsDuplicated(user))
                 {
-                    throw new Exception("重複しています");
+                    throw new DomainException("重複しています");
                 }
 
                 _repository.Save(user);
