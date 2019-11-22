@@ -35,12 +35,15 @@ namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Test.Users
             }
         }
 
-        [Fact]
-        public void Find_UserId()
+        [Theory]
+        [InlineData("1")]
+        [InlineData("2")]
+        [InlineData("3")]
+        public void Find_UserId(string id)
         {
             // Arrange
             PrepareUsers();
-            var expect = _users.First(_ => _.UserId.Equals(new UserId("1")));
+            var expect = _users.First(_ => _.UserId.Equals(new UserId(id)));
 
             // Act
             var result = _userRepository.Find(expect.UserId);
@@ -108,7 +111,7 @@ namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Test.Users
             }
         }
 
-        [Fact()]
+        [Fact]
         public void Save()
         {
             // Arrange
@@ -125,18 +128,26 @@ namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Test.Users
             result.FullName.Is(expect.FullName);
         }
 
-        [Fact()]
-        public void RemoveTest()
+        [Theory]
+        [MemberData(nameof(TestData))]
+        public void RemoveTest(User user)
         {
             // Arrange
             PrepareUsers();
-            var expect = new User(new UserId("3"), new UserName("Saburo"), new FullName("Saburo", "Tanaka"));
+            var expect = user;
 
             // Act
             _userRepository.Remove(expect);
 
             // Assert
             _userRepository.Find(expect.UserId).IsNull();
+        }
+
+        public static IEnumerable<object[]> TestData()
+        {
+            yield return new object[] { new User(new UserId("1"), new UserName("Taro"), new FullName("Taro", "Yamada")) };
+            yield return new object[] { new User(new UserId("2"), new UserName("Jiro"), new FullName("Jiro", "Suzuki")) };
+            yield return new object[] { new User(new UserId("3"), new UserName("Saburo"), new FullName("Saburo", "Tanaka"))};
         }
     }
 }
