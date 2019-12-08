@@ -7,6 +7,7 @@ using Xunit;
 
 namespace DotNetCoreMediatrSample.Web.Test.Controllers
 {
+    [Trait("Category", "Integration")]
     public class UsersControllerTest : IClassFixture<IntegrationTestWebApplicationFactory<Startup>>
     {
         private readonly HttpClient _client;

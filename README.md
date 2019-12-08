@@ -2,7 +2,7 @@
 MediatR を用いて CQRS を実装するサンプル
 
 ## Feature
-- .NET Core 3.0
+- .NET Core 3.1
 - ASP.NET Core
 - MediatR
 - DDD

@@ -1,11 +1,6 @@
-﻿using Microsoft.AspNetCore.TestHost;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using DotNetCoreMediatrSample.Domain.Domain.Users;
+﻿using DotNetCoreMediatrSample.Domain.Domain.Users;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetCoreMediatrSample.Web.Test

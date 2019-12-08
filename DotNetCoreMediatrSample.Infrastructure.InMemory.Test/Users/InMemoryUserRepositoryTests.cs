@@ -7,6 +7,7 @@ using DotNetCoreMediatrSample.Domain.Domain.Users;
 
 namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Test.Users
 {
+    [Trait("Category", "Logic")]
     public class InMemoryUserRepositoryTests
     {
         private readonly InMemoryUserRepository _userRepository;
