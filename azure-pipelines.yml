@@ -21,10 +21,10 @@ steps:
     installationPath: $(Agent.ToolsDirectory)/dotnet
 
 - script: dotnet restore
-  displayName: 'dotnet restore'
+  displayName: 'Run dotnet restore'
 
 - script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+  displayName: 'Run dotnet build $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
   inputs:
@@ -32,7 +32,7 @@ steps:
     projects: '*.Test/*.Test.csproj'
     arguments: -c $(BuildConfiguration) --collect:"XPlat Code Coverage" -- RunConfiguration.DisableAppDomain=true
     testRunTitle: $(Build.DefinitionName)_$(Build.BuildNumber)_$(Build.BuildId)
-  displayName: Run Tests
+  displayName: Run tests
 
 - task: DotNetCoreCLI@2
   inputs:
@@ -50,8 +50,15 @@ steps:
     codeCoverageTool: Cobertura
     summaryFileLocation: $(Build.SourcesDirectory)/coverlet/reports/Cobertura.xml  
 
+- task: PublishTestResults@2
+  displayName: Publish test results
+  inputs:
+    testResultsFormat: 'XUnit'
+    testResultsFiles: '$(Agent.TempDirectory)/**/*.trx'
+    testRunTitle: $(Build.DefinitionName)_$(Build.BuildNumber)_$(Build.BuildId)
+
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet publish $(buildConfiguration)'
+  displayName: 'Run dotnet publish $(buildConfiguration)'
   inputs:
     command: publish
     publishWebProjects: True
@@ -59,4 +66,4 @@ steps:
     zipAfterPublish: True
 
 - task: PublishBuildArtifacts@1
-  displayName: 'publish artifacts'
+  displayName: 'Publish artifacts'
