@@ -7,11 +7,14 @@ using DotNetCoreMediatrSample.Domain.Domain.Users;
 
 namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Test.Users
 {
+    /// <summary>
+    /// <see cref="InMemoryUserRepository"/> のテストクラスです。
+    /// </summary>
     [Trait("Category", "Logic")]
     public class InMemoryUserRepositoryTests
     {
         private readonly InMemoryUserRepository _userRepository;
-        private readonly List<User> _users = new List<User>
+        private readonly List<User> _users = new()
         {
             new User(new UserId("1"), new UserName("Taro"), new FullName("Taro", "Yamada")),
             new User(new UserId("2"), new UserName("Jiro"), new FullName("Jiro", "Suzuki")),
