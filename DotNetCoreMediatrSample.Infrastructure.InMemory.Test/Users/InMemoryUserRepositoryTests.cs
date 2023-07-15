@@ -39,6 +39,10 @@ namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Test.Users
             }
         }
 
+        /// <summary>
+        /// <see cref="InMemoryUserRepository.Find(UserId)"/> が正常に動作することを確認します。
+        /// </summary>
+        /// <param name="id"></param>
         [Theory]
         [InlineData("1")]
         [InlineData("2")]
@@ -58,6 +62,10 @@ namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Test.Users
             result.FullName.Is(expect.FullName);
         }
 
+        /// <summary>
+        /// <see cref="InMemoryUserRepository.Find(UserId)"/> が正常に動作することを確認します。
+        /// 該当する <see cref="User"/> が存在しない場合。
+        /// </summary>
         [Fact]
         public void Find_UserId_データ無し()
         {
@@ -68,6 +76,9 @@ namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Test.Users
             result.IsNull();
         }
 
+        /// <summary>
+        /// <see cref="InMemoryUserRepository.Find(UserName)"/> が正常に動作することを確認します。
+        /// </summary>
         [Fact]
         public void Find_UserName()
         {
@@ -84,6 +95,10 @@ namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Test.Users
             result.FullName.Is(expect.FullName);
         }
 
+        /// <summary>
+        /// <see cref="InMemoryUserRepository.Find(UserName)"/> が正常に動作することを確認します。
+        /// 該当する <see cref="User"/> が存在しない場合。
+        /// </summary>
         [Fact]
         public void Find_UserName_データ無し()
         {
@@ -94,6 +109,9 @@ namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Test.Users
             result.IsNull();
         }
 
+        /// <summary>
+        /// <see cref="InMemoryUserRepository.FindAll"/> が正常に動作することを確認します。
+        /// </summary>
         [Fact]
         public void FindAll()
         {
@@ -115,6 +133,9 @@ namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Test.Users
             }
         }
 
+        /// <summary>
+        /// <see cref="InMemoryUserRepository.Save"/> が正常に動作することを確認します。
+        /// </summary>
         [Fact]
         public void Save()
         {
@@ -132,6 +153,10 @@ namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Test.Users
             result.FullName.Is(expect.FullName);
         }
 
+        /// <summary>
+        /// <see cref="InMemoryUserRepository.Remove"/> が正常に動作することを確認します。
+        /// </summary>
+        /// <param name="user"></param>
         [Theory]
         [MemberData(nameof(TestData))]
         public void RemoveTest(User user)
@@ -147,6 +172,10 @@ namespace DotNetCoreMediatrSample.Infrastructure.InMemory.Test.Users
             _userRepository.Find(expect.UserId).IsNull();
         }
 
+        /// <summary>
+        /// テストデータを生成します。
+        /// </summary>
+        /// <returns></returns>
         public static IEnumerable<object[]> TestData()
         {
             yield return new object[] { new User(new UserId("1"), new UserName("Taro"), new FullName("Taro", "Yamada")) };
