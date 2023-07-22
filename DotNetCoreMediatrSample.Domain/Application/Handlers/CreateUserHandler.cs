@@ -9,12 +9,20 @@ using DotNetCoreMediatrSample.Domain.Application.Models;
 
 namespace DotNetCoreMediatrSample.Domain.Application.Handlers
 {
+    /// <summary>
+    /// <see cref="CreateUserCommand"/> を取り扱う <see cref="IRequestHandler{TRequest,TResponse}"/> です。
+    /// </summary>
     public class CreateUserHandler : IRequestHandler<CreateUserCommand, UserModel>
     {
         private readonly IUserRepository _repository;
         private readonly UserService _service;
         private readonly IUserFactory _factory;
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="repository"><see cref="IUserRepository"/></param>
+        /// <param name="factory"><see cref="IUserFactory"/></param>
         public CreateUserHandler(IUserRepository repository, IUserFactory factory)
         {
             _repository = repository;
@@ -22,6 +30,7 @@ namespace DotNetCoreMediatrSample.Domain.Application.Handlers
             _factory = factory;
         }
 
+        /// <inheritdoc />
         public Task<UserModel> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             User user;
